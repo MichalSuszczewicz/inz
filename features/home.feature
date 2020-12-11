@@ -5,4 +5,4 @@ Feature: My first feature file using radish
 
     Scenario: Test
         Given I am on wi zut page
-        Then I see wi zut title
+        Then I see wi zut titlet
