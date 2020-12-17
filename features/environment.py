@@ -1,9 +1,14 @@
 from selenium import webdriver
-from features.config import Template
+from features.pages.base_page import BasePage
 
-def before_feature(self, context):
+def before_all(context):
 
-    context.browser = Template()
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    driver.implicitly_wait(10)
 
-def after_feature(self, context):
-    context.browser.quit()
+    context.browser = BasePage(driver)
+    context
+
+#def after_scenario(context, scenario):
+ #   context.browser.screenshot(str(scenario))

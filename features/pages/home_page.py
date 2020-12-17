@@ -1,9 +1,13 @@
-from features.config import Template
+from features.pages.base_page import BasePage
+from selenium import *
 
 
-class HomePage(Template):
+class HomePage(BasePage):
+    def __init__(self, context):
+        BasePage.__init__(self, context.browser, base_url = 'https://wi.zut.edu.pl')
+
     def locate_element(self):
-        self.find_element_by_css_selector('body > div:nth-child(5) > div > div.col-sm-6.wi-header > a > span')
+        return 1
 
     def read_element(self):
-        return self.find_element_by_css_selector('body > div:nth-child(5) > div > div.col-sm-6.wi-header > a > span').text
+        return 1
