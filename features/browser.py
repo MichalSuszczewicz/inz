@@ -2,10 +2,16 @@ from selenium import webdriver
 import unittest
 import argparse
 
+from selenium import webdriver
 
-class Template():
+class Browser(object):
 
-        driver = webdriver.Chrome
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.implicitly_wait(10)
+
+        def close(context):
+                context.driver.close()
 
      #   def close(context):
            #     context.driver.close()

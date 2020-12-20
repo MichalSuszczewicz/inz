@@ -7,13 +7,14 @@ from behave import given, when, then
 
 @given('I am on wi zut page')
 def test_case_name(context):
-    #context.browser.base_url='https://wi.zut.edu.pl'
-    home_page = HomePage(context)
-    home_page.base_url = 'https://wi.zut.edu.pl'
+    context.browser.get('https://wi.zut.edu.pl')
+   # home_page = HomePage(context)
+   # home_page.visit('https://wi.zut.edu.pl')
+   # home_page.base_url = 'https://wi.zut.edu.pl'
 
 @then('I see wi zut title')
-def test_case(context):
-    return 1
-    # home_page = HomePage(context)
-    # home_page.locate_element()
-    # assert home_page.read_element() == "Wydział Informatyki"
+def test_case_name(context):
+    #return 1
+    home_page = HomePage(context)
+    home_page.locate_element()
+    assert home_page.read_element() == "Wydział Informatyki"
