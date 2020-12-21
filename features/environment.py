@@ -3,10 +3,9 @@ from features.pages.base_page import BasePage
 
 
 def before_all(context):
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    context.browser = BasePage(driver)
+    context.browser = webdriver.Chrome()
+    context.browser.maximize_window()
+    context.browser.implicitly_wait(10)
 
 
 def after_scenario(context, scenario):
