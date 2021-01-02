@@ -6,7 +6,7 @@ from behave import given, when, then
 
 @given('I am on wi zut page')
 def test_case_name(context):
-    context.browser.get('https://wi.zut.edu.pl')
+    context.driver.get('https://wi.zut.edu.pl')
 
 
 @then('I see wi zut title "{page_title}"')
