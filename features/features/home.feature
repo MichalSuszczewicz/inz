@@ -1,6 +1,12 @@
-Feature: testowy
+Feature: Open page
 
-    Scenario: Test scenario
+    @pass
+    Scenario: Page is accessible and displayed
 
         Given I am on wi zut page
-        Then I see wi zut title
+        Then I see wi zut title "Wydział Informatyki"
+    @fail
+    Scenario: Page is accessible and displayed
+
+        Given I am on wi zut page
+        Then I see wi zut title "Wydział Informatykii"
