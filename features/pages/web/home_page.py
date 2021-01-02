@@ -1,6 +1,5 @@
-from features.pages.base_page import BasePage
+from features.pages.web.base_page import BasePage
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 
 
 class HomePage(BasePage):

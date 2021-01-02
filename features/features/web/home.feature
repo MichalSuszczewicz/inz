@@ -1,3 +1,4 @@
+@fixture.web
 Feature: Open page
 
     @pass

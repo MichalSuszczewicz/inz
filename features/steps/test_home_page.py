@@ -1,7 +1,6 @@
-from features.pages.home_page import HomePage
-from features.pages.base_page import BasePage
+from features.pages.web.home_page import HomePage
 #from features.config import Template
-from behave import given, when, then
+from behave import given, then
 
 
 @given('I am on wi zut page')
