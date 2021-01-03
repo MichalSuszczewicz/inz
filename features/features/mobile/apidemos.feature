@@ -2,10 +2,11 @@
 Feature: Open app
 
     @pass
-    Scenario: app is opened
+    Scenario: app is opened and interactive
 
-        Given I am on wi zut page
-        Then I see wi zut title "Wydział Informatyki"
+        Given App is opened
+        Then I see app title "API Demos"
+        And I can navigate through the app
 #    @fail
 #    Scenario: Page is accessible and displayed
 #

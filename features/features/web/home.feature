@@ -4,7 +4,7 @@ Feature: Open page
     @pass
     Scenario: Page is accessible and displayed
 
-        Given I am on wi zut page
+        Given I am on wi zut home page
         Then I see wi zut title "Wydział Informatyki"
 #    @fail
 #    Scenario: Page is accessible and displayed
