@@ -13,6 +13,5 @@ def test_case_name(context):
 def test_case_name(context, page_title):
     home_page = HomePage(context)
     home_page.check_if_title_is_displayed()
-    assert home_page.home_page_title.text == page_title
-    #assert home_page.app_title == page_title
+    assert home_page.get_page_title() == page_title
 

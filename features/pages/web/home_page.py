@@ -12,6 +12,9 @@ class HomePage(BasePage):
 
 	def check_if_title_is_displayed(self):
 		self.home_page_title.is_displayed()
+
+	def get_page_title(self):
+		return self.home_page_title.text
 	#
 	# def read_element(self):
 	# 	print(self.home_page_title.text)

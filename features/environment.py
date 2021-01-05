@@ -1,4 +1,5 @@
-from selenium import webdriver
+from selenium import webdriver as webd
+from appium import webdriver
 from behave import fixture
 from behave import use_fixture
 
@@ -14,16 +15,16 @@ def web(context):
 		profile = 'chrome'
 
 	if profile == 'chrome':
-		context.driver = webdriver.Chrome()
+		context.driver = webd.Chrome()
 	elif profile == 'firefox':
-		context.driver = webdriver.Firefox()
+		context.driver = webd.Firefox()
 	else:
-		context.driver = webdriver.Chrome()
+		context.driver = webd.Chrome()
 
 	context.driver.maximize_window()
 	context.driver.implicitly_wait(10)
 	yield context.driver
-	context.driver.quit()
+	#context.driver.quit()
 
 @fixture
 def mobile(context):
@@ -50,7 +51,7 @@ def mobile(context):
 		context.driver = webdriver.Remote("http://localhost:4723/wd/hub", dc)
 
 	yield context.driver
-	context.driver.quit()
+	#context.driver.quit()
 
 # def before_scenario(context, scenario):
 #
