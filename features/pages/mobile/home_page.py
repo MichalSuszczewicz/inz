@@ -3,16 +3,19 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from features.objects.android.home_page_objects import *
 
 
 class HomePage(BasePage):
 
 	def __init__(self, context):
 		BasePage.__init__(self,context.driver)
+		objects = HomePageObjects()
 
-		self.app_title = context.driver.find_element_by_xpath('/hierarchy/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView')
-		self.accessibility_button = context.driver.find_element_by_xpath('//android.widget.TextView[@content-desc="Accessibility"]')
-		self.app_frame = context.driver.find_element(By.XPATH,'/hierarchy/android.widget.FrameLayout/android.view.ViewGroup')
+
+		self.app_title = context.driver.find_element(By.XPATH,objects.app_title['xpath'])
+		self.accessibility_button = context.driver.find_element(By.XPATH,objects.accessibility_button['xpath'])
+		self.app_frame = context.driver.find_element(By.XPATH,objects.app_frame['xpath'])
 
 	def check_if_frame_is_displayed(self):
 		wait = WebDriverWait(self, 10)
