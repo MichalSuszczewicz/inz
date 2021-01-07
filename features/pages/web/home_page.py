@@ -1,8 +1,6 @@
 from features.pages.web.base_page import BasePage
 from features.objects.web.home_page_objects import *
 
-from selenium.webdriver.common.by import By
-
 
 class HomePage(BasePage):
 
@@ -17,7 +15,3 @@ class HomePage(BasePage):
 
 	def get_page_title(self):
 		return self.home_page_title.text
-	#
-	# def read_element(self):
-	# 	print(self.home_page_title.text)
-	# 	return self.home_page_title.text
