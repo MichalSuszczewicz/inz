@@ -83,7 +83,6 @@ def mobile(context):
 	else:
 		print(color.format('fail', 'use one profile from the list: android, ios'))
 
-
 	print(color.format('span','Scenario time duration in seconds: '), context.scenario.duration)
 	print(color.format('quit', '===>App quits'))
 
