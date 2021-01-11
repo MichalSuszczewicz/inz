@@ -5,12 +5,10 @@ from behave import use_fixture
 import os
 from datetime import datetime
 from color_logs import *
-import subprocess
-
+from allure_behave.hooks import allure_report
 
 color = ColorLogs()
 device = ''
-#collect_session = False
 
 @fixture
 def web(context):
@@ -35,7 +33,7 @@ def web(context):
 	context.driver.implicitly_wait(10)
 	yield context.driver
 	context.driver.quit()
-	print(color.format('span','Scenario time duration in seconds: '), context.scenario.duration)
+	print(color.format('span','\nScenario time duration in seconds: '), context.scenario.duration)
 	print(color.format('quit','===>Browser quits'))
 
 
@@ -68,7 +66,6 @@ def mobile(context):
 		collect_android_log(context, logs, time_start)
 		context.driver.quit()
 
-
 	elif profile == 'ios':
 		dc['app'] = ''
 		dc['platformName'] = 'iOS'
@@ -83,7 +80,7 @@ def mobile(context):
 	else:
 		print(color.format('fail', 'use one profile from the list: android, ios'))
 
-	print(color.format('span','Scenario time duration in seconds: '), context.scenario.duration)
+	print(color.format('span','\nScenario time duration in seconds: '), context.scenario.duration)
 	print(color.format('quit', '===>App quits'))
 
 
@@ -109,6 +106,10 @@ def after_step(context, step):
 		print("screenshot with failed saved in: "+os.getcwd()+"/screenshots/")
 
 
+def before_all(context):
+	allure_report(os.getcwd() + "allure/results")
+
+
 def collect_android_log(context, logs, time_start):
 	out_filename = os.getcwd() + "/android_logs/logfile_" + context.driver.capabilities.get(
 		'deviceName') + "_" + time_start + ".log"
@@ -118,3 +119,5 @@ def collect_android_log(context, logs, time_start):
 	for i in range(num):
 		f.write(adb_logs[i]+"\n")
 	f.close()
+
+
