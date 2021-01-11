@@ -5,7 +5,6 @@ from behave import use_fixture
 import os
 from datetime import datetime
 from color_logs import *
-import logging
 
 
 color = ColorLogs()

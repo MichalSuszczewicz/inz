@@ -3,15 +3,22 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from features.objects.android.home_page_objects import *
+from features.objects.android.home_page_objects import HomePageObjects as aobj
+from features.objects.ios.home_page_objects import HomePageObjects as iobj
 
 
 class HomePage(BasePage):
 
 	def __init__(self, context):
 		BasePage.__init__(self,context.driver)
-		objects = HomePageObjects()
+		platform = BasePage.platformName(context)
 
+		if platform == "Android":
+			objects = aobj()
+		elif platform == "iOS":
+			objects = iobj()
+		else:
+			objects = aobj()
 
 		self.app_title = context.driver.find_element(By.XPATH,objects.app_title['xpath'])
 		self.accessibility_button = context.driver.find_element(By.XPATH,objects.accessibility_button['xpath'])
