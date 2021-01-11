@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 
 # custom
-*.log
+/*.log
+*.png
+app/
