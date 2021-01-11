@@ -8,6 +8,7 @@ from color_logs import *
 
 
 color = ColorLogs()
+device = ''
 
 @fixture
 def web(context):
@@ -15,7 +16,7 @@ def web(context):
 		if context.config.userdata['profile'] is None:
 			profile = 'chrome'
 		else:
-			profile = context.config.userdata['profile']
+			profile = context.config.userdata['profile'].lower()
 	else:
 		profile = 'chrome'
 
@@ -26,8 +27,7 @@ def web(context):
 		context.driver = webd.Firefox()
 		print(color.format('start','===>Browser starts'))
 	else:
-		context.driver = webd.Chrome()
-		print(color.format('start','===>Browser starts'))
+		print(color.format('fail', 'use one profile from the list: chrome, firefox'))
 
 	context.driver.maximize_window()
 	context.driver.implicitly_wait(10)
@@ -45,7 +45,7 @@ def mobile(context):
 		if context.config.userdata['profile'] is None:
 			profile = 'android'
 		else:
-			profile = context.config.userdata['profile']
+			profile = context.config.userdata['profile'].lower()
 	else:
 		profile = 'android'
 
@@ -56,7 +56,6 @@ def mobile(context):
 		dc['deviceName'] = 'Pixel 3 API 29'
 		dc['automationName'] = 'UiAutomator2'
 		dc["newCommandTimeout"] = 300
-
 		context.driver = webdriver.Remote("http://localhost:4723/wd/hub", dc)
 		print(color.format('start','===>App starts'))
 
@@ -69,6 +68,8 @@ def mobile(context):
 		dc["newCommandTimeout"] = 300
 		context.driver = webdriver.Remote("http://localhost:4723/wd/hub", dc)
 		print(color.format('start', '===>App starts'))
+	else:
+		print(color.format('fail', 'use one profile from the list: android, ios'))
 
 	yield context.driver
 	context.driver.quit()
@@ -76,26 +77,18 @@ def mobile(context):
 	print(color.format('quit', '===>App quits'))
 
 
+def before_tag(context, tag):
+	global device
+	if tag == "fixture.mobile":
+		device = "mobile"
+	elif tag == "fixture.web":
+		device = "web"
+
 def before_scenario(context, scenario):
-
-	if 'profile' in context.config.userdata.keys():
-		if context.config.userdata['profile'] is None:
-			profile = 'chrome'
-		else:
-			profile = context.config.userdata['profile']
-	else:
-		profile = 'chrome'
-
-	if profile == 'android' or profile == 'ios':
-
+	if device == "mobile":
 		use_fixture(mobile, context)
-
-	elif profile == 'chrome' or profile == 'firefox':
+	elif device == "web":
 		use_fixture(web, context)
-
-	else:
-		print(color.format('fail', 'use one profile from the list: chrome, firefox, android, ios'))
-
 
 def after_step(context, step):
 	if step.status == 'failed':
