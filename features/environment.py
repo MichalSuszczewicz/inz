@@ -28,7 +28,7 @@ def web(context):
 		print(color.format('start','===>Browser starts'))
 	else:
 		print(color.format('fail', 'use one profile from the list: chrome, firefox'))
-
+	context.driver.get("https://wi.zut.edu.pl")
 	context.driver.maximize_window()
 	context.driver.implicitly_wait(10)
 	yield context.driver
