@@ -3,7 +3,6 @@ from behave import given, then
 
 @given('I am on wi zut home page')
 def test_case_name(context):
-    context.driver.get('https://wi.zut.edu.pl')
     assert context.driver.current_url == 'https://www.wi.zut.edu.pl/pl/'
 
 
