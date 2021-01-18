@@ -132,3 +132,13 @@ dmypy.json
 /*.log
 *.png
 *.apk
+allure/reports/data/*
+allure/reports/export/*
+allure/reports/history/*
+allure/reports/plugins/*
+allure/reports/widgets/*
+allure/reports/*.js
+allure/reports/*.ico
+allure/reports/*.html
+allure/reports/*.css
+allure/results/*.json
