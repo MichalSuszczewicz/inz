@@ -131,4 +131,4 @@ dmypy.json
 # custom
 /*.log
 *.png
-app/
+*.apk
