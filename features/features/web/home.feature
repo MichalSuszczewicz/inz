@@ -1,16 +1,10 @@
 @fixture.web
-Feature: Open page
+Feature: strona wyswietla naglowek
 
     Background:
-        Given I am on wi zut home page
+        Given strona wi zut jest otwarta
 
     @smoke
-    Scenario: Page is accessible and displayed first attempt
-
-        #Given I am on wi zut home page
-        Then I see wi zut title "Wydział Informatykii"
-    @sanity @smoke
-    Scenario: Page is accessible and displayed
-
-        #Given I am on wi zut home page
-        Then I see wi zut title "Wydział Informatyki"
+    Scenario: naglowek strony wyswietla poprawna tresc
+        When uzytkownik spojrzy na naglowek
+        Then uzytkownik widzi tresc "Wydział Informatyki"

@@ -40,7 +40,7 @@ def web(context):
 @fixture
 def mobile(context):
 	dc = {}
-	global collect_session
+	#global collect_session
 
 	if 'profile' in context.config.userdata.keys():
 		if context.config.userdata['profile'] is None:
