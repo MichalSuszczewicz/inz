@@ -1,5 +1,7 @@
 from features.pages.web.base_page import BasePage
 from features.objects.web.login_page_objects import *
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginPage(BasePage):
@@ -51,8 +53,9 @@ class LoginPage(BasePage):
 		global error, error_field
 		error_field = context.driver.find_element_by_xpath(self.objects.error_field['xpath'])
 		error = context.driver.find_element_by_xpath(self.objects.error['xpath'])
-		error_field.is_displayed()
-		error.is_displayed()
+		wait = WebDriverWait(self, 10)
+		wait.until(EC.visibility_of(error_field))
+		wait.until(EC.visibility_of(error))
 
 	def get_error_message(self):
 		return error.text
