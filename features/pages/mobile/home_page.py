@@ -9,37 +9,44 @@ from features.objects.ios.home_page_objects import HomePageObjects as iobj
 
 class HomePage(BasePage):
 
+	app_title = None
+	accessibility_button = None
+	app_frame = None
+
 	def __init__(self, context):
-		BasePage.__init__(self,context.driver)
-		platform = BasePage.platformName(context)
+		BasePage.__init__(self, context.driver)
+		platform = BasePage.platform_name(context)
 
 		if platform == "Android":
-			objects = aobj()
+			self.objects = aobj()
 		elif platform == "iOS":
-			objects = iobj()
+			self.objects = iobj()
 		else:
-			objects = aobj()
+			self.objects = aobj()
 
-		self.app_title = context.driver.find_element(By.XPATH,objects.app_title['xpath'])
-		self.accessibility_button = context.driver.find_element(By.XPATH,objects.accessibility_button['xpath'])
-		self.app_frame = context.driver.find_element(By.XPATH,objects.app_frame['xpath'])
-
-	def check_if_frame_is_displayed(self):
+	def check_if_frame_is_displayed(self, context):
+		app_frame = context.driver.find_element(By.XPATH, self.objects.app_frame['xpath'])
 		wait = WebDriverWait(self, 10)
-		wait.until(EC.visibility_of(self.app_frame))
+		wait.until(EC.visibility_of(app_frame))
 
-	def app_title_is_displayed(self):
+	def app_title_is_displayed(self, context):
+		global app_title
+		app_title = context.driver.find_element(By.XPATH, self.objects.app_title['xpath'])
 		wait = WebDriverWait(self, 10)
-		wait.until(EC.visibility_of(self.app_title))
+		wait.until(EC.visibility_of(app_title))
 
 	def get_app_title(self):
-		return self.app_title.text
+		return app_title.text
 
-	def accessibility_button_is_displayed(self):
+	def accessibility_button_is_displayed(self, context):
+		global accessibility_button
+		accessibility_button = context.driver.find_element(By.XPATH, self.objects.accessibility_button['xpath'])
 		wait = WebDriverWait(self, 10)
-		wait.until(EC.visibility_of(self.accessibility_button))
+		wait.until(EC.visibility_of(accessibility_button))
 
 	def tap_accessibility(self):
 		actions = TouchAction(self.driver)
-		actions.tap(self.accessibility_button)
+		actions.tap(accessibility_button)
 		actions.perform()
+
+

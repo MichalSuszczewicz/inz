@@ -1,5 +1,6 @@
-@fixture.web
-Feature: Logowanie
+
+ @fixture.web
+ Feature: Logowanie
 
     Background:
         Given strona wi zut jest otwarta
@@ -17,3 +18,6 @@ Feature: Logowanie
             | test       | test               |
             | nrindeksu_3| qwertyuiop         |
             | ze spacja  | haslobezspacji     |
+
+
+

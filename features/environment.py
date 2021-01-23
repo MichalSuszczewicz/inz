@@ -5,7 +5,6 @@ from behave import use_fixture
 import os
 from datetime import datetime
 from color_logs import *
-from allure_behave.hooks import allure_report
 
 color = ColorLogs()
 device = ''
@@ -22,10 +21,10 @@ def web(context):
 
 	if profile == 'chrome':
 		context.driver = webd.Chrome()
-		print(color.format('start','===>Browser starts'))
+		print(color.format('start', '===>Browser starts'))
 	elif profile == 'firefox':
 		context.driver = webd.Firefox()
-		print(color.format('start','===>Browser starts'))
+		print(color.format('start', '===>Browser starts'))
 	else:
 		print(color.format('fail', 'use one profile from the list: chrome, firefox'))
 	context.driver.get("https://wi.zut.edu.pl")
@@ -33,14 +32,13 @@ def web(context):
 	context.driver.implicitly_wait(10)
 	yield context.driver
 	context.driver.quit()
-	print(color.format('span','\nScenario time duration in seconds: '), context.scenario.duration)
-	print(color.format('quit','===>Browser quits'))
+	print(color.format('span', '\nScenario time duration in seconds: '), context.scenario.duration)
+	print(color.format('quit', '===>Browser quits'))
 
 
 @fixture
 def mobile(context):
 	dc = {}
-	#global collect_session
 
 	if 'profile' in context.config.userdata.keys():
 		if context.config.userdata['profile'] is None:
@@ -60,7 +58,7 @@ def mobile(context):
 		dc["clearDeviceLogsOnStart"] = True
 		context.driver = webdriver.Remote("http://localhost:4723/wd/hub", dc)
 		logs = context.driver.get_log("logcat")
-		print(color.format('start','===>App starts'))
+		print(color.format('start', '===>App starts'))
 		time_start = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 		yield context.driver
 		collect_android_log(context, logs, time_start)
@@ -80,7 +78,7 @@ def mobile(context):
 	else:
 		print(color.format('fail', 'use one profile from the list: android, ios'))
 
-	print(color.format('span','\nScenario time duration in seconds: '), context.scenario.duration)
+	print(color.format('span', '\nScenario time duration in seconds: '), context.scenario.duration)
 	print(color.format('quit', '===>App quits'))
 
 
@@ -104,10 +102,6 @@ def after_step(context, step):
 		now = datetime.now()
 		context.driver.save_screenshot(os.getcwd()+"/screenshots/"+step.name+now.strftime("%m_%d_%Y_%H_%M_%S")+".png")
 		print("screenshot with failed saved in: "+os.getcwd()+"/screenshots/")
-
-
-def before_all(context):
-	allure_report(os.getcwd() + "allure/results")
 
 
 def collect_android_log(context, logs, time_start):

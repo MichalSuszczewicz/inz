@@ -135,6 +135,7 @@ dmypy.json
 allure/reports/data/*
 allure/reports/export/*
 allure/reports/history/*
+allure/results/history/*
 allure/reports/plugins/*
 allure/reports/widgets/*
 allure/reports/*.js

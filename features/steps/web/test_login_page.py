@@ -1,6 +1,6 @@
 from features.pages.web.login_page import LoginPage
 from features.pages.web.home_page import HomePage
-from behave import given, then, when
+from behave import then, when
 
 
 @when('uzytkownik kliknie przycisk logowania')
@@ -21,10 +21,12 @@ def test_case_name(context, login):
     login_page = LoginPage(context)
     login_page.send_text_to_login_input(login)
 
+
 @when('uzytkownik wpisze haslo "{password}"')
 def test_case_name(context, password):
     login_page = LoginPage(context)
     login_page.send_text_to_password_input(password)
+
 
 @when('uzytkownik kliknie przycisk "{button}"')
 def test_case_name(context, button):
@@ -33,10 +35,16 @@ def test_case_name(context, button):
     assert login_page.get_button_text() == button
     login_page.click_log_in_button()
 
+
 @then('zostaje wyswietlony komunikat o bledzie "{error}"')
 def test_case_name(context, error):
     login_page = LoginPage(context)
     login_page.check_if_error_message_displayed(context)
     assert login_page.get_error_message() == error
+
+
+
+
+
 
 

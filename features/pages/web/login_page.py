@@ -11,7 +11,7 @@ class LoginPage(BasePage):
 	error = None
 
 	def __init__(self, context):
-		BasePage.__init__(self,context.driver, base_url='https://wi.zut.edu.pl')
+		BasePage.__init__(self, context.driver, base_url='https://wi.zut.edu.pl')
 		self.objects = LoginPageObjects()
 
 	def check_if_login_form_is_displayed(self, context):

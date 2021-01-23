@@ -8,7 +8,7 @@ class HomePage(BasePage):
 	login_button = None
 
 	def __init__(self, context):
-		BasePage.__init__(self,context.driver, base_url='https://wi.zut.edu.pl')
+		BasePage.__init__(self, context.driver, base_url='https://wi.zut.edu.pl')
 		self.objects = HomePageObjects()
 
 	def check_if_title_is_displayed(self, context):

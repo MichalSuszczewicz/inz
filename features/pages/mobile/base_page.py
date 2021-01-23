@@ -3,8 +3,10 @@ class BasePage(object):
         self.driver = driver
         self.timeout = 30
 
-    def platformName(self):
+    def platform_name(self):
 
         platform = self.driver.capabilities.get('platformName')
 
         return platform
+
+

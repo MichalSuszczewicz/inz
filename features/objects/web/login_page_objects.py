@@ -6,3 +6,5 @@ class LoginPageObjects():
 		self.login_form = {'css_selector': '', 'xpath':'//*[@id="main-content"]/div[2]/form'}
 		self.error_field = {'css_selector': '', 'xpath': '//*[@id="system-message"]'}
 		self.error = {'css_selector': '', 'xpath': '//*[@id="system-message"]/div/div/div'}
+
+
