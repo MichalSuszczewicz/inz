@@ -61,5 +61,17 @@ To run this project for selected platform and profile, but only with specific te
 ````
 
 ````
-behave --tags=fixture.web -D profile=firefox --tags=smoke
+$ behave --tags=fixture.web -D profile=firefox --tags=smoke
+````
+
+To run this project with allure report format use command:
+
+````
+$ behafe -f allure_behave.formatter:AllureFormatter -o allure/results ./features
+````
+
+To generate report after test execution run:
+
+````
+$ allure generate allure/results/ -o allure/reports/ --clean
 ````
