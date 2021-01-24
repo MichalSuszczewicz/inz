@@ -1,9 +1,9 @@
 # Web and Mobile automation framework based on Page Object with Behave
 
 ## Table of contents
-* General Info
-* Requirements
-* Run commands
+* [General Info](#general-info)
+* [Requirements](#Requirements)
+* [Run commands](#run-commands)
 
 ## General info
 This project was created for engineer thesis purposes. It allows to create tests for Web and Mobile platforms in scope of 1 project
