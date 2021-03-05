@@ -1,19 +1,19 @@
 
  @fixture.web
- Feature: Logowanie
+ Feature: Log-in
 
     Background:
-        Given strona wi zut jest otwarta
+        Given wi zut webpage is opened
     @sanity
-    Scenario Outline: logowanie zlymi danymi
-        When uzytkownik kliknie przycisk logowania
-        Then uzytkownik widzi strone logowania
-        When uzytkownik wpisze login "<login>"
-        And uzytkownik wpisze haslo "<haslo>"
-        And uzytkownik kliknie przycisk "Zaloguj"
-        Then zostaje wyswietlony komunikat o bledzie "Nieprawidłowa nazwa użytkownika lub hasło albo nie masz u nas jeszcze konta"
+    Scenario Outline: log-in with incorrect data
+        When user clicks log-in button
+        Then user see log-in page
+        When user type login "<login>"
+        And user type pass "<haslo>"
+        And user click button "Zaloguj"
+        Then error is displayed "Nieprawidłowa nazwa użytkownika lub hasło albo nie masz u nas jeszcze konta"
 
-        Examples: bledne_dane
+        Examples: incorrect data
             | login      | haslo              |
             | test       | test               |
             | nrindeksu_3| qwertyuiop         |
